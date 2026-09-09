@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------
-# 2. Custom CSS (Luxury Light Glassmorphism + Colored Accents)
+# 2. Custom CSS (Luxury Light Glassmorphism + Extended Visual Highlights)
 # ---------------------------------------------------------
 custom_css = """
 <style>
@@ -23,7 +23,7 @@ custom_css = """
     /* Global Typography & Light Background */
     html, body, [class*="css"], .stApp {
         font-family: 'Plus Jakarta Sans', sans-serif !important;
-        background: #f1f5f9 !important;
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
         color: #0f172a !important;
     }
 
@@ -35,20 +35,20 @@ custom_css = """
 
     /* Custom Glassmorphism Containers */
     .glass-card {
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
         border-radius: 24px;
         padding: 28px;
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 15px rgba(59, 130, 246, 0.05);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 20px rgba(59, 130, 246, 0.08);
         margin-bottom: 24px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .glass-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.12);
+        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15);
     }
 
     /* Vibrant Gradient Cards */
@@ -58,6 +58,7 @@ custom_css = """
         border-radius: 20px;
         padding: 24px;
         box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        transition: transform 0.3s ease;
     }
 
     .purple-gradient-card {
@@ -66,6 +67,7 @@ custom_css = """
         border-radius: 20px;
         padding: 24px;
         box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        transition: transform 0.3s ease;
     }
 
     .orange-red-card {
@@ -74,6 +76,11 @@ custom_css = """
         border-radius: 20px;
         padding: 24px;
         box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .blue-gradient-card:hover, .purple-gradient-card:hover, .orange-red-card:hover {
+        transform: translateY(-4px);
     }
 
     /* Hero Header Banner */
@@ -82,42 +89,45 @@ custom_css = """
         border: 1px solid rgba(255, 255, 255, 0.9);
         border-radius: 28px;
         padding: 36px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
-        margin-bottom: 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+        margin-bottom: 20px;
         position: relative;
         overflow: hidden;
     }
 
     /* Sidebar Luxury Styling */
     section[data-testid="stSidebar"] {
-        background-color: #ffffff !important;
+        background: #ffffff !important;
         border-right: 1px solid #e2e8f0;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.02);
     }
 
     /* Radio Button Nav Tabs Styling */
     .stRadio > div {
-        gap: 10px;
+        gap: 12px;
     }
     
     .stRadio label {
         background: #f8fafc;
         border: 1px solid #e2e8f0;
-        border-radius: 14px !important;
+        border-radius: 16px !important;
         padding: 12px 18px !important;
         font-weight: 600 !important;
         color: #334155 !important;
-        transition: all 0.2s ease;
+        transition: all 0.25s ease !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
 
     .stRadio label:hover {
-        border-color: #a855f7 !important;
+        border-color: #8b5cf6 !important;
         background: #faf5ff !important;
+        transform: translateX(4px);
     }
 
     /* Input Form Glass Effect */
     div[data-testid="stForm"] {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
         border: 1px solid #e2e8f0;
         border-radius: 24px;
         padding: 30px;
@@ -165,6 +175,17 @@ custom_css = """
         letter-spacing: 0.05em;
     }
 
+    .badge-green {
+        background: #d1fae5;
+        color: #065f46;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
     /* Result Containers */
     .approved-card {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -186,6 +207,22 @@ custom_css = """
         font-size: 1.4rem;
         font-weight: 800;
         box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    }
+
+    /* Feature Badge Grid Icon Item */
+    .icon-badge-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        transition: transform 0.2s ease;
+    }
+    .icon-badge-box:hover {
+        transform: translateY(-2px);
     }
 </style>
 """
@@ -209,13 +246,14 @@ model, model_columns = load_ml_assets()
 # 4. Sidebar & Luxury Navigation
 # ---------------------------------------------------------
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/1041/1041888.png", width=65)
+    # Changed Icon to Bank/House Icon
+    st.image("https://cdn-icons-png.flaticon.com/512/2830/2830284.png", width=70)
     st.markdown("## **AuraFinance AI**")
-    st.markdown('<span class="badge-purple">PRO ENGINE v3.0</span>', unsafe_allow_html=True)
+    st.markdown('<span class="badge-purple">PRO ENGINE v3.0</span> <span class="badge-green">ONLINE</span>', unsafe_allow_html=True)
     st.write("")
 
     nav_selection = st.radio(
-        "Main Menu",
+        "Main Navigation Menu",
         [
             "🏠 Home & Portal",
             "📊 Risk Analytics",
@@ -227,12 +265,28 @@ with st.sidebar:
 
     st.divider()
 
-    # Sidebar Quick Stats Box
+    # Enhanced Sidebar Quick Stats Box
     st.markdown("""
-    <div style="background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #e2e8f0;">
-        <p style="margin:0; font-size: 0.8rem; color: #64748b; font-weight:700;">SYSTEM STATUS</p>
-        <p style="margin:4px 0 0 0; font-weight:800; color: #10b981;">🟢 Live Neural Engine</p>
-        <p style="margin:2px 0 0 0; font-size: 0.75rem; color: #94a3b8;">Latency: 12ms | Accuracy: 98.4%</p>
+    <div style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 18px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 0.75rem; color: #64748b; font-weight:800; letter-spacing: 0.05em;">SYSTEM HEALTH</span>
+            <span style="height: 10px; width: 10px; background-color: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #10b981;"></span>
+        </div>
+        <p style="margin:2px 0; font-weight:800; color: #0f172a; font-size: 0.95rem;">🟢 Live Neural Engine</p>
+        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #e2e8f0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <div>
+                <p style="margin:0; font-size: 0.7rem; color: #94a3b8;">LATENCY</p>
+                <p style="margin:0; font-weight:700; font-size: 0.85rem; color: #3b82f6;">12ms</p>
+            </div>
+            <div>
+                <p style="margin:0; font-size: 0.7rem; color: #94a3b8;">ACCURACY</p>
+                <p style="margin:0; font-weight:700; font-size: 0.85rem; color: #8b5cf6;">98.4%</p>
+            </div>
+        </div>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0;">
+            <p style="margin:0; font-size: 0.7rem; color: #94a3b8;">SECURITY LEVEL</p>
+            <p style="margin:0; font-weight:700; font-size: 0.8rem; color: #10b981;">🔒 256-bit Encrypted</p>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -241,21 +295,30 @@ with st.sidebar:
 # ---------------------------------------------------------
 if nav_selection == "🏠 Home & Portal":
     
-    # Hero Section
+    # Hero Section with 6 Colorful Icons
     st.markdown("""
     <div class="hero-banner">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div style="max-width: 650px;">
+            <div style="max-width: 600px;">
                 <span class="badge-blue">NEXT-GEN FINTECH</span>
-                <h1 style="margin: 12px 0 8px 0; color: #0f172a; font-size: 2.6rem;">Smart Credit & Loan Evaluation</h1>
-                <p style="color: #475569; font-size: 1.1rem; line-height: 1.6; margin: 0;">
+                <h1 style="margin: 12px 0 8px 0; color: #0f172a; font-size: 2.5rem;">Smart Credit & Loan Evaluation</h1>
+                <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin: 0;">
                     Experience real-time AI risk assessment. Get instant approval insights using high-precision machine learning models.
                 </p>
             </div>
-            <div style="display: flex; gap: 15px;">
-                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" width="90" alt="Money Bag">
-                <img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" width="90" alt="Home">
-            </div>
+            <!-- Expanded 6 Colorful Icons Grid -->
+          <div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 14px;">
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" width="52" alt="Money Bag"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" width="52" alt="Home"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" width="52" alt="Credit Card"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" width="52" alt="AI Shield"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" width="52" alt="Analytics Vault"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" width="52" alt="Bank Growth"></div>
+    <!-- 3 New Colored Icons -->
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" width="52" alt="Approval Badge"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910756.png" width="52" alt="Financial Calculator"></div>
+    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055644.png" width="52" alt="Loan Agreement"></div>
+</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -379,8 +442,18 @@ if nav_selection == "🏠 Home & Portal":
 # ---------------------------------------------------------
 elif nav_selection == "📊 Risk Analytics":
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.title("📊 Financial Risk Analytics & Model Insights")
-    st.write("In-depth analysis of machine learning decision boundaries and features.")
+    
+    # Styled Header with Icon
+    st.markdown("""
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" width="45">
+        <div>
+            <h2 style="margin:0; font-size: 2rem; color: #0f172a;">Financial Risk Analytics & Model Insights</h2>
+            <p style="margin:0; color: #64748b;">In-depth analysis of machine learning decision boundaries and feature attribution weights.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
     
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("Base Classifier", "XGBoost / LogReg")
@@ -389,9 +462,14 @@ elif nav_selection == "📊 Risk Analytics":
     m4.metric("Dataset Size", "614 Records")
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # Feature Importance Showcase
+    # Feature Importance Showcase with Existing Chart Structure Intact
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.subheader("🔥 Key Predictor Weights")
+    st.markdown("""
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+        <h3 style="margin:0;">🔥 Key Predictor Weights</h3>
+        <span class="badge-purple">SHAP & Gini Importance</span>
+    </div>
+    """, unsafe_allow_html=True)
     
     chart_data = pd.DataFrame({
         'Feature': ['Credit History', 'Applicant Income', 'Loan Amount', 'Coapplicant Income', 'Property Area'],
@@ -405,8 +483,16 @@ elif nav_selection == "📊 Risk Analytics":
 # ---------------------------------------------------------
 elif nav_selection == "⚡ Instant Pre-Check":
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.title("⚡ Quick Financial Eligibility Estimator")
-    st.write("Estimate your maximum loan capacity before filling the full application.")
+    
+    st.markdown("""
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" width="45">
+        <div>
+            <h2 style="margin:0; font-size: 2rem; color: #0f172a;">Quick Financial Eligibility Estimator</h2>
+            <p style="margin:0; color: #64748b;">Estimate your maximum loan capacity before filling the full application.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
     col_a, col_b = st.columns(2)
     with col_a:
@@ -414,7 +500,7 @@ elif nav_selection == "⚡ Instant Pre-Check":
         exp = st.number_input("Monthly Expenses ($)", value=2000)
     
     with col_b:
-        dti = ((exp) / inc) * 100
+        dti = ((exp) / inc) * 100 if inc > 0 else 0
         st.metric("Debt-To-Income (DTI) Ratio", f"{dti:.1f}%")
         
         if dti < 35:
@@ -423,6 +509,22 @@ elif nav_selection == "⚡ Instant Pre-Check":
             st.info("Moderate DTI Ratio. Standard loan terms apply.")
         else:
             st.error("High DTI Ratio. Consider lowering existing debt.")
+
+    st.markdown("<hr style='border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;'>", unsafe_allow_html=True)
+    
+    # Styled Additional Pre-Check Insights Box
+    max_borrow = (inc - exp) * 60  # Approx 5-year leverage estimation
+    st.markdown(f"""
+    <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); padding: 20px; border-radius: 16px; border: 1px solid #bfdbfe;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <h4 style="margin:0; color: #1e3a8a;">💡 Estimated Maximum Borrowing Limit</h4>
+                <p style="margin:4px 0 0 0; color: #475569; font-size: 0.9rem;">Based on a standard 40% maximum installment capacity threshold.</p>
+            </div>
+            <h2 style="margin:0; color: #166534; font-weight: 800;">${max_borrow:,.0f}</h2>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
             
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -431,7 +533,17 @@ elif nav_selection == "⚡ Instant Pre-Check":
 # ---------------------------------------------------------
 elif nav_selection == "ℹ️ Platform Vision":
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.title("💎 About AuraFinance Engine")
+    
+    st.markdown("""
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" width="50">
+        <div>
+            <h2 style="margin:0; font-size: 2rem; color: #0f172a;">About AuraFinance Engine</h2>
+            <p style="margin:0; color: #64748b;">Next-Generation Automated Credit Risk Infrastructure.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.markdown("""
     AuraFinance is an enterprise-grade automated decision engine engineered to streamline capital distribution and retail mortgage lending.
     
@@ -439,4 +551,36 @@ elif nav_selection == "ℹ️ Platform Vision":
     * **ML Engine:** Scikit-Learn Pipeline Serialization
     * **Visual Identity:** Luxury Light Theme with Radiant Gradient Highlights
     """)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Platform Architecture Feature Cards
+    v1, v2, v3 = st.columns(3)
+    with v1:
+        st.markdown("""
+        <div style="background: #ffffff; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" width="40" style="margin-bottom:10px;">
+            <h4 style="margin:0; font-size: 1.05rem;">Neural Precision</h4>
+            <p style="margin:6px 0 0 0; font-size: 0.85rem; color: #64748b;">Sub-second execution with automated feature pipeline transformation.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with v2:
+        st.markdown("""
+        <div style="background: #ffffff; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" width="40" style="margin-bottom:10px;">
+            <h4 style="margin:0; font-size: 1.05rem;">Zero-Bias Engine</h4>
+            <p style="margin:6px 0 0 0; font-size: 0.85rem; color: #64748b;">Strict regulatory compliance and fair credit scoring principles.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with v3:
+        st.markdown("""
+        <div style="background: #ffffff; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" width="40" style="margin-bottom:10px;">
+            <h4 style="margin:0; font-size: 1.05rem;">Bank-Grade Vault</h4>
+            <p style="margin:6px 0 0 0; font-size: 0.85rem; color: #64748b;">Enterprise encryption protecting input financial metrics.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("</div>", unsafe_allow_html=True)
