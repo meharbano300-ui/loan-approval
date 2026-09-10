@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------
-# 2. Custom CSS (Luxury Light Glassmorphism + Extended Visual Highlights)
+# 2. Custom CSS (Luxury Light Glassmorphism + Mobile Responsiveness)
 # ---------------------------------------------------------
 custom_css = """
 <style>
@@ -59,6 +59,8 @@ custom_css = """
         padding: 24px;
         box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         transition: transform 0.3s ease;
+        height: 100%;
+        margin-bottom: 15px;
     }
 
     .purple-gradient-card {
@@ -68,6 +70,8 @@ custom_css = """
         padding: 24px;
         box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
         transition: transform 0.3s ease;
+        height: 100%;
+        margin-bottom: 15px;
     }
 
     .orange-red-card {
@@ -77,6 +81,8 @@ custom_css = """
         padding: 24px;
         box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
         transition: transform 0.3s ease;
+        height: 100%;
+        margin-bottom: 15px;
     }
 
     .blue-gradient-card:hover, .purple-gradient-card:hover, .orange-red-card:hover {
@@ -217,12 +223,41 @@ custom_css = """
         background: #ffffff;
         border: 1px solid #e2e8f0;
         border-radius: 18px;
-        padding: 10px;
+        padding: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         transition: transform 0.2s ease;
     }
     .icon-badge-box:hover {
         transform: translateY(-2px);
+    }
+    .icon-badge-box img {
+        width: 100%;
+        max-width: 36px;
+        height: auto;
+    }
+
+    /* Mobile Responsive Flexbox Fixes for Hero & Icons */
+    .hero-content-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .hero-icons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    @media (min-width: 768px) {
+        .hero-icons-grid {
+            grid-template-columns: repeat(9, 1fr);
+            max-width: none;
+        }
     }
 </style>
 """
@@ -243,7 +278,7 @@ def load_ml_assets():
 model, model_columns = load_ml_assets()
 
 # ---------------------------------------------------------
-# 4. Sidebar & Luxury Navigation
+# 4. Sidebar & Luxury Navigation (Streamlit Mobile Hamburger Native Support)
 # ---------------------------------------------------------
 with st.sidebar:
     # Changed Icon to Bank/House Icon
@@ -295,10 +330,10 @@ with st.sidebar:
 # ---------------------------------------------------------
 if nav_selection == "🏠 Home & Portal":
     
-    # Hero Section with 6 Colorful Icons
+    # Hero Section with 9 Responsive Icons Grid
     st.markdown("""
     <div class="hero-banner">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div class="hero-content-flex">
             <div style="max-width: 600px;">
                 <span class="badge-blue">NEXT-GEN FINTECH</span>
                 <h1 style="margin: 12px 0 8px 0; color: #0f172a; font-size: 2.5rem;">Smart Credit & Loan Evaluation</h1>
@@ -306,27 +341,26 @@ if nav_selection == "🏠 Home & Portal":
                     Experience real-time AI risk assessment. Get instant approval insights using high-precision machine learning models.
                 </p>
             </div>
-            <!-- Expanded 6 Colorful Icons Grid -->
-          <div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 14px;">
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" width="52" alt="Money Bag"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" width="52" alt="Home"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" width="52" alt="Credit Card"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" width="52" alt="AI Shield"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" width="52" alt="Analytics Vault"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" width="52" alt="Bank Growth"></div>
-    <!-- 3 New Colored Icons -->
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" width="52" alt="Approval Badge"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910756.png" width="52" alt="Financial Calculator"></div>
-    <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055644.png" width="52" alt="Loan Agreement"></div>
-</div>
+            <!-- Responsive 9 Icons Grid -->
+            <div class="hero-icons-grid">
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt="Money Bag"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Home"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Credit Card"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="AI Shield"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" alt="Analytics Vault"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Bank Growth"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Approval Badge"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910756.png" alt="Financial Calculator"></div>
+                <div class="icon-badge-box"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055644.png" alt="Loan Agreement"></div>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Colorful Visual Showcase Cards
-    c1, c2, c3 = st.columns(3)
+    # Colorful Visual Showcase Cards with Responsive Layouts
+    col_card1, col_card2, col_card3 = st.columns(3)
     
-    with c1:
+    with col_card1:
         st.markdown("""
         <div class="blue-gradient-card">
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" width="45" style="margin-bottom:12px;">
@@ -335,7 +369,7 @@ if nav_selection == "🏠 Home & Portal":
         </div>
         """, unsafe_allow_html=True)
 
-    with c2:
+    with col_card2:
         st.markdown("""
         <div class="purple-gradient-card">
             <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" width="45" style="margin-bottom:12px;">
@@ -344,7 +378,7 @@ if nav_selection == "🏠 Home & Portal":
         </div>
         """, unsafe_allow_html=True)
 
-    with c3:
+    with col_card3:
         st.markdown("""
         <div class="orange-red-card">
             <img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" width="45" style="margin-bottom:12px;">

@@ -66,5 +66,5 @@ Follow these steps to run the application locally:
 
 ### 1. Clone Repository
 ```bash
-git clone [https://github.com/your-username/loan-approval-prediction.git](https://github.com/your-username/loan-approval-prediction.git)
+https://github.com/meharbano300-ui/loan-approval
 cd loan-approval-prediction
