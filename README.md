@@ -66,7 +66,7 @@ Follow these steps to run the application locally:
 
 ### 1. Clone Repository
 ```bash
-https://github.com/meharbano300-ui/loan-approval
+https://github.com/meharbano700-cmd/ml-loan-approval
 <<<<<<< HEAD
 cd loan-approval-prediction
 =======
